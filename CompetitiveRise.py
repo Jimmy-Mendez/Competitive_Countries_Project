@@ -25,6 +25,4 @@ reg = linear_model.LinearRegression()
 reg.fit(df[['Competitive_Rise_Country']], df.gdppercapitaconstantlcunygdppcap)
 plt.plot(df.Competitive_Rise_Country, reg.predict(df[['Competitive_Rise_Country']]))
 
-print(reg.predict([[0.084159523]]))
-
 ##Using the pre-2010 data, the competitive index predicts gdp growth very well
