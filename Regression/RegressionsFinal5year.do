@@ -43,24 +43,4 @@ eststo: xtreg F5.Competitive_Rise_Country pastgrowth5 Competitive_Rise_Country C
 estadd local fixed "Yes" , replace
 esttab using Table2z.tex, replace label drop(*.year) frag  s(fixed N, label("Country FE")) title(5 year Competitive Rise Forecast\label{tab2})
 
-*1 year growth forecast
-eststo clear
-eststo: quietly xtreg futgrowth1 Competitive_Rise_Country Competitive_Decline_Country pastgrowth1 L.pastgrowth1 i.year, fe
-estadd local fixed "Yes" , replace
-eststo: quietly xtreg futgrowth1 Competitive_Rise_Country Competitive_Decline_Country pastgrowth1 L.pastgrowth1 L2.pastgrowth1 i.year, fe
-estadd local fixed "Yes" , replace
-eststo: xtreg futgrowth1 Competitive_Rise_Country Competitive_Decline_Country pastgrowth1 L.pastgrowth1 L2.pastgrowth1 pastgrowth5 export_share_of_GDP interaction i.year, fe
-estadd local fixed "Yes" , replace
-esttab using Table3z.tex, replace label drop(*.year) frag  s(fixed N, label("Country FE")) title(1 year growth forecast\label{tab3})
-
-*1 year Competitive Rise Forecast
-eststo clear
-eststo: quietly xtreg F1.Competitive_Rise_Country pastgrowth1 i.year, fe
-estadd local fixed "Yes" , replace
-eststo: quietly xtreg F1.Competitive_Rise_Country pastgrowth1 Competitive_Rise_Country L.Competitive_Rise_Country L2.Competitive_Rise_Country Competitive_Decline_Country L.Competitive_Decline_Country L2.Competitive_Decline_Country i.year, fe
-estadd local fixed "Yes" , replace
-eststo: xtreg F1.Competitive_Rise_Country pastgrowth1 Competitive_Rise_Country L.Competitive_Rise_Country L2.Competitive_Rise_Country L3.Competitive_Rise_Country Competitive_Decline_Country  L.Competitive_Decline_Country L2.Competitive_Decline_Country L3.Competitive_Decline_Country export_share_of_GDP interaction i.year, fe
-estadd local fixed "Yes" , replace
-esttab using Table4z.tex, replace label drop(*.year) frag  s(fixed N, label("Country FE")) title(1 year Competitive Rise Forecast\label{tab4})
-
 *The between R2 is "How much of the variance between seperate panel units does my model account for" The within R2 is "How much of the variance within the panel units does my model account for" and the R2 overall is a weighted average of these two.
