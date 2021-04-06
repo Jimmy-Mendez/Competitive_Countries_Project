@@ -44,23 +44,3 @@ estadd local fixed "Yes" , replace
 eststo: xtreg futgrowth5 aveRCAyear pastgrowth5 export_share_of_GDP interaction i.year, fe
 estadd local fixed "Yes" , replace
 esttab using Table2y.tex, replace label drop(*.year) frag  s(fixed N, label("Country FE")) title(RCA with Respect to Future GDP Growth (With Time Effects)\label{tab1}) 
-
-*1 year growth forecast using CR/CD
-eststo clear
-eststo: quietly xtreg futgrowth1 Competitive_Rise_Country Competitive_Decline_Country pastgrowth1 L.pastgrowth1 i.year, fe
-estadd local fixed "Yes" , replace
-eststo: quietly xtreg futgrowth1 Competitive_Rise_Country Competitive_Decline_Country pastgrowth1 L.pastgrowth1 pastgrowth5 i.year, fe
-estadd local fixed "Yes" , replace
-eststo: xtreg futgrowth1 Competitive_Rise_Country Competitive_Decline_Country pastgrowth1 L2.pastgrowth1 pastgrowth5 export_share_of_GDP interaction i.year, fe
-estadd local fixed "Yes" , replace
-esttab using Table3y.tex, replace label drop(*.year) frag  s(fixed N, label("Country FE")) title(1 year growth forecast\label{tab3})
-
-*1 year growth forecast using RCA
-eststo clear
-eststo: quietly xtreg futgrowth1 aveRCAyear pastgrowth1 L.pastgrowth1 i.year, fe
-estadd local fixed "Yes" , replace
-eststo: quietly xtreg futgrowth1 aveRCAyear pastgrowth1 L.pastgrowth1 pastgrowth5 i.year, fe
-estadd local fixed "Yes" , replace
-eststo: xtreg futgrowth1 aveRCAyear pastgrowth1 L2.pastgrowth1 pastgrowth5 export_share_of_GDP interaction i.year, fe
-estadd local fixed "Yes" , replace
-esttab using Table4y.tex, replace label drop(*.year) frag  s(fixed N, label("Country FE")) title(1 year growth forecast\label{tab3})
